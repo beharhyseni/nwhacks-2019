@@ -2,10 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nwhacks2019">
 
-    <uses-permission android:name = "android.permission.INTERNET"/>
-    <uses-feature android:name="android.hardware.camera"
+    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,17 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".FeedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
             <meta-data
                 android:name="com.google.firebase.ml.vision.DEPENDENCIES"
                 android:value="ocr" />
         </activity>
-        <activity android:name=".final_activity"></activity>
+        <activity android:name=".final_activity" />
     </application>
 
 </manifest>
