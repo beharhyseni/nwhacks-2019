@@ -23,6 +23,7 @@
                 android:name="com.google.firebase.ml.vision.DEPENDENCIES"
                 android:value="ocr" />
         </activity>
+        <activity android:name=".final_activity"></activity>
     </application>
 
 </manifest>

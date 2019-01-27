@@ -20,12 +20,17 @@
 
     <Button
         android:id="@+id/btnCamera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="129dp"
+        android:layout_height="109dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="136dp"
-        android:background="@android:color/holo_red_dark"
-        android:text="Take the picture"
+        android:layout_marginLeft="140dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginRight="133dp"
+        android:layout_marginBottom="81dp"
+        android:background="@drawable/camera"
         android:textAlignment="center"
         android:textColor="@android:color/white" />
 
@@ -35,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/btnCamera"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="13dp"
         android:background="@android:color/holo_red_dark"
         android:text="Press here to compare the price"
         android:textAlignment="center"

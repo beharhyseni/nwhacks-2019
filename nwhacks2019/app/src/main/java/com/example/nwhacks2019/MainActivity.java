@@ -71,8 +71,16 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-
             ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+
+            if (resultCode == RESULT_OK) {
+
+
+                Intent intent = new Intent(MainActivity.this, final_activity.class);
+                startActivity(intent);
+            }
+
+
 
 
         }
@@ -97,5 +105,14 @@ public class MainActivity extends AppCompatActivity {
             txtResult.setText(sb.toString());
         }
 
+
+        }
+
+
+
+        public String getBarcode(View v){
+
+
+        return "";
         }
     }
