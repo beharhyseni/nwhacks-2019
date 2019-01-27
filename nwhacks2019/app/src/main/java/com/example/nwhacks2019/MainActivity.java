@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnCamera = (Button) findViewById(R.id.btnCamera);
         btnAnalyze = (Button) findViewById(R.id.btnAnalyze);
         txtResult = (TextView) findViewById(R.id.txt_result);
-       // imageView = (ImageView) findViewById(R.id.imageView2);
+        // imageView = (ImageView) findViewById(R.id.imageView2);
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 0);
             }
-
 
 
         });
@@ -65,44 +64,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
-            bitmap = (Bitmap) data.getExtras().get("data");
-            getTextFromImage(getView());
-           // imageView.setImageBitmap(bitmap);
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        bitmap = (Bitmap) data.getExtras().get("data");
+        getTextFromImage(getView());
+        // imageView.setImageBitmap(bitmap);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
 
-            if (resultCode == RESULT_OK) {
-
-
-                Intent intent = new Intent(MainActivity.this, final_activity.class);
-
-                startActivity(intent);
-            }
+        if (resultCode == RESULT_OK) {
 
 
+           // Intent intent = new Intent(MainActivity.this, final_activity.class);
+            Intent intent = new Intent(MainActivity.this, FeedActivity.class);
 
-
+            startActivity(intent);
         }
 
-        public void getTextFromImage(View v){
+
+    }
+
+    public void getTextFromImage(View v) {
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
-        if(!textRecognizer.isOperational()){
+        if (!textRecognizer.isOperational()) {
             Toast.makeText(getApplicationContext(), "Text cannot be recognized!", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        } else {
             Frame frame = new Frame.Builder().setBitmap(bitmap).build();
             SparseArray<TextBlock> items = textRecognizer.detect(frame);
 
             StringBuilder sb = new StringBuilder();
 
-            for(int i =0;i<items.size();++i){
-            TextBlock myItem = items.valueAt(i);
-            sb.append(myItem.getValue());
-            sb.append("\n");
+            for (int i = 0; i < items.size(); ++i) {
+                TextBlock myItem = items.valueAt(i);
+                sb.append(myItem.getValue());
+                sb.append("\n");
             }
 
             txtResult.setText(sb.toString());
@@ -111,19 +108,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        }
-
-
-
-        public TextView getTextView(){
-            return txtResult;
-            }
-
-            private View getView(){
-        return this.view;
-            }
-            private void setView(View view){
-            this.view = view;
-            }
-
     }
+
+
+    public TextView getTextView() {
+        return txtResult;
+    }
+
+    private View getView() {
+        return this.view;
+    }
+
+    private void setView(View view) {
+        this.view = view;
+    }
+
+}
