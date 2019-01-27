@@ -29,7 +29,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             price = v.findViewById(R.id.price);
             image = v.findViewById(R.id.image);
             store = v.findViewById(R.id.store);
-
             ct = v.getContext();
             image.setOnClickListener(this);
             //Drawable myDrawable = ct.getDrawable(R.drawable.plumber);

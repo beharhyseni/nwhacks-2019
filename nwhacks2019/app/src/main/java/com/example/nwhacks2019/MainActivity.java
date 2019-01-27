@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
 
 
-                Intent intent = new Intent(MainActivity.this, final_activity.class);
+                Intent intent = new Intent(MainActivity.this, FeedActivity.class);
 
                 startActivity(intent);
             }
@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if(!textRecognizer.isOperational()){
             Toast.makeText(getApplicationContext(), "Text cannot be recognized!", Toast.LENGTH_SHORT).show();
+            //Data data = Data.getInstance();
+            //data.setTextView("lysol wipes");
         }
         else{
             Frame frame = new Frame.Builder().setBitmap(bitmap).build();

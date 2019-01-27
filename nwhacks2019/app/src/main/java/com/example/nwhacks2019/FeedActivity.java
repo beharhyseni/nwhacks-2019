@@ -35,10 +35,10 @@ public class FeedActivity extends AppCompatActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
 
         JSONObject results = CallServer();
         mAdapter = new PostsAdapter(results, this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }
 
@@ -48,8 +48,11 @@ class ScrapeTask extends AsyncTask<Void, Void, JSONObject> {
     protected JSONObject doInBackground(Void... params) {
         JSONObject results = new JSONObject();
         try {
+            Data d = Data.getInstance();
+            String query = d.getTextView();
             Scraper scraper = new Scraper();
-            results = scraper.runScraper("lysol wipes", 3);
+            query = "lysol wipes";
+            results = scraper.runScraper(query, 3);
         } catch (Exception e) {
             e.printStackTrace();
         }
