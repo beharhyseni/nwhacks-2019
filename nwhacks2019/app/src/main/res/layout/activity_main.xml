@@ -5,19 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:weightSum="10"
+    android:layout_gravity="center"
     tools:context=".MainActivity">
 
     <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="546dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false" />
 
 
     <Button
         android:id="@+id/btnCamera"
-        android:layout_width="1sp"
+        android:layout_width="319dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_dark"
-        android:textColor="@android:color/white"
-        android:text="Take a Picture"
-        />
+        android:gravity="center"
+        android:text="Capture the Item Tag"
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
+
+
 </LinearLayout>
