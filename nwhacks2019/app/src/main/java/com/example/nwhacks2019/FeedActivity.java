@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import org.json.JSONObject;
+
 public class FeedActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -17,18 +19,14 @@ public class FeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
         mRecyclerView = findViewById(R.id.my_recycler_view);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
-        //ServicesData data = new ServicesData();
-        //ServicePost[] servicePosts = data.getServicesData();
-        //mAdapter = new PostsAdapter(servicePosts, this);
-        //mRecyclerView.setAdapter(mAdapter);
+        Scraper scraper = new Scraper();
+        JSONObject results = scraper.runScraper("lysol wipes", 3);
+        mAdapter = new PostsAdapter(results, this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }

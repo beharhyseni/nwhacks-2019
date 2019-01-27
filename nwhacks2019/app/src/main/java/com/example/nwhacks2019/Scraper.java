@@ -10,7 +10,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,17 +19,17 @@ import java.util.Map;
 public class Scraper {
     // Initialize Globals:
     // Max number of google searches done by google api -- is 20 by default
-    private static int maxGoogleResults = 20;
+    private int maxGoogleResults = 20;
     // store sites to scrape
-    private static String[] stores = {"amazon", "londondrugs", "realcanadiansuperstore", "thriftyfoods"};
+    private String[] stores = {"amazon", "londondrugs", "realcanadiansuperstore", "thriftyfoods"};
     // Map loose store name to official store name (e.g. "londondrugs" -> "London Drugs")
-    private static Map<String, String> storeNameToFullName = new HashMap<String, String>();
+    private Map<String, String> storeNameToFullName = new HashMap<String, String>();
 
     // Potential Store List
     // "amazon", "apple", "bestbuy", "costco", "homedepot", "iga", "londondrugs", "macys",
     // "realcanadiansuperstore", "safeway", "saveonfoods", "shoppersdrugmart", "target", "walmart"
 
-    private static void initializeStoreToFullNameMap() {
+    private void initializeStoreToFullNameMap() {
         storeNameToFullName.put("amazon", "Amazon");
         storeNameToFullName.put("londondrugs", "London Drugs");
         storeNameToFullName.put("realcanadiansuperstore", "Real Canadian SuperStore");
@@ -38,7 +37,7 @@ public class Scraper {
     }
 
     // Check if url is one of our desired stores
-    private static boolean verifyURL(String url) {
+    private boolean verifyURL(String url) {
         try {
             URL aURL = new URL(url);
             String host = aURL.getHost();
@@ -58,7 +57,7 @@ public class Scraper {
 
     // Input: a product query (e.g. "lysol wipes")
     // Output: a map of store names to product urls
-    private static Map<String, List<String>> googleSearch(String query) {
+    private Map<String, List<String>> googleSearch(String query) {
         Map<String, List<String>> stores_to_urls = new HashMap<String, List<String>>();
 
         for (Map.Entry<String, String> entry : storeNameToFullName.entrySet()) {
@@ -73,7 +72,7 @@ public class Scraper {
 
     // Input: google search query for product
     // Output: list of urls of best matching results
-    private static List<String> googleSearchstore(String query) {
+    private List<String> googleSearchstore(String query) {
         // Create search query
         String searchURL = "https://www.google.com/search" + "?q=" + query + "&num=" + maxGoogleResults;
         // Results
@@ -94,6 +93,7 @@ public class Scraper {
 
         } catch (Exception e) {
             // Do something
+            System.out.print(e.getMessage());
         }
 
         return urls;
@@ -101,7 +101,7 @@ public class Scraper {
 
     // Input: a map of store names to urls
     // Output: JSON object containing info of products from the input urls
-    private static JSONObject getProducts(Map<String, List<String>> stores_to_urls) {
+    private JSONObject getProducts(Map<String, List<String>> stores_to_urls) {
         // Results
         JSONObject resultsJson = new JSONObject();
 
@@ -145,7 +145,7 @@ public class Scraper {
 
     // Input: url containing info of a product
     // Output: returns product info after scraping url
-    private static String[] scrapestoreSite(String url, String[] details) {
+    private String[] scrapestoreSite(String url, String[] details) {
         // HTML elements that contain info about product
         String nameElement = details[0];
         String priceElement = details[1];
@@ -175,7 +175,7 @@ public class Scraper {
     }
 
     // Details for scraping specific sites
-    private static String[] getstoreScrapeDetails(String store) {
+    private String[] getstoreScrapeDetails(String store) {
         String nameSearch;
         String priceSearch;
         String imageSearch;
@@ -210,7 +210,7 @@ public class Scraper {
     }
 
     // Run the scraper
-    public static JSONObject runScraper(String query, Integer nSites){
+    public JSONObject runScraper(String query, Integer nSites){
         maxGoogleResults = nSites;
         initializeStoreToFullNameMap();
         Map<String, List<String>> stores_to_urls = googleSearch(query);
@@ -223,9 +223,5 @@ public class Scraper {
         System.out.print(prettyJsonString);
 
         return resultsJson;
-    }
-
-    public static void main(String[] args) throws IOException {
-        runScraper("lysol wipes", 5);
     }
 }

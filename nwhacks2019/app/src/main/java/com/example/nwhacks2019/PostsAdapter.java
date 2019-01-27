@@ -6,37 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
-public class PostsAdapter {
-    /*
-    private ServicePost[] posts;
+import org.json.JSONObject;
+
+public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+
+    private JSONObject posts;
     private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView title;
-        public TextView description;
-        public TextView host;
-        public TextView numRatings;
-        public ImageView photo;
-        public RatingBar rating;
+        public TextView name;
+        public TextView price;
+        public ImageView image;
+        public TextView store;
         private final Context ct;
 
         public ViewHolder(View v) {
             super(v);
-            title = v.findViewById(R.id.title);
-            description = v.findViewById(R.id.description);
-            host = v.findViewById(R.id.host);
-            numRatings = v.findViewById(R.id.numRatings);
-            photo = v.findViewById(R.id.photo);
-            rating = v.findViewById(R.id.ratingBar);
+            name = v.findViewById(R.id.title);
+            price = v.findViewById(R.id.price);
+            image = v.findViewById(R.id.image);
+            store = v.findViewById(R.id.store);
+
             ct = v.getContext();
-            photo.setOnClickListener(this);
-            //int resID = ct.getResources().getIdentifier("plumber.jpg" , "drawable", ct.getPackageName());
-            Drawable myDrawable = ct.getDrawable(R.drawable.plumber);
-            photo.setImageDrawable(myDrawable);
+            image.setOnClickListener(this);
+            //Drawable myDrawable = ct.getDrawable(R.drawable.plumber);
+            //image.setImageDrawable(myDrawable);
         }
 
         @Override
@@ -46,7 +43,7 @@ public class PostsAdapter {
         }
     }
 
-    public PostsAdapter(ServicePost[] posts, Context context) {
+    public PostsAdapter(JSONObject posts, Context context) {
         this.posts = posts;
         this.context = context;
     }
@@ -62,17 +59,19 @@ public class PostsAdapter {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(posts[position].getTitle());
-        holder.description.setText(posts[position].getDescription());
-        holder.host.setText(posts[position].getHost());
-        holder.numRatings.setText(posts[position].getNumRatings().toString());
-        holder.rating.setNumStars((int)posts[position].getRating());
-        //Picasso.with(context).load(posts[position].getPhoto()).into(holder.photo);
+        String positionString = Integer.toString(position);
+        try {
+            JSONObject productJSON = posts.getJSONObject(positionString);
+            holder.name.setText(productJSON.get("name").toString());
+            holder.price.setText(productJSON.get("price").toString());
+            holder.store.setText(productJSON.get("store").toString());
+        } catch (Exception e) {
+        }
+        //Picasso.with(context).load(posts[position].getimage()).into(holder.image);
     }
 
     @Override
     public int getItemCount() {
-        return posts.length;
+        return posts.length();
     }
-    * */
 }
