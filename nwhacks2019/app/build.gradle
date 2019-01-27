@@ -26,6 +26,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // Libraries
-  //  implementation 'com.microsoft.projectoxford:vision:1.0.394'
+    // Vision API
+    implementation 'com.github.eddydn:EDMTDevCognitiveVision:1.3'
 }

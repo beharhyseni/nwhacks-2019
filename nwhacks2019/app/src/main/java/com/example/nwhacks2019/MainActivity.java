@@ -9,8 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import edmt.dev.edmtdevcognitivevision.VisionServiceClient;
+import edmt.dev.edmtdevcognitivevision.VisionServiceRestClient;
+
 public class MainActivity extends AppCompatActivity {
+
 ImageView imageView;
+
+private final String API_KEY = "afb4814ea5374242bad2d032bced892c";
+private final String API_LINK = "https://canadacentral.api.cognitive.microsoft.com/";
+
+// Vision Client
+    VisionServiceClient visionServiceClient = new VisionServiceRestClient(API_KEY, API_LINK);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
