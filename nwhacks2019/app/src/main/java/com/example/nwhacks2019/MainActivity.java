@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(MainActivity.this, final_activity.class);
+
                 startActivity(intent);
             }
 
@@ -110,9 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        public String getBarcode(View v){
+        public TextView getTextView(){
+            return txtResult;
+            }
 
-
-        return "";
-        }
     }
