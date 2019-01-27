@@ -5,9 +5,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="267dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="100dp"
-        android:layout_weight="1"
-        android:text="BOI BOI TEST A BIT" />
+        android:layout_marginRight="5dp"
+        android:layout_weight="1" />
 </LinearLayout>

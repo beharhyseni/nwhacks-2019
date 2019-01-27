@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnCamera;
     Button btnAnalyze;
     TextView txtResult;
+    View view;
 
     private final String API_KEY = "2a7ac6f5e6364cd089251fc0b60b6f11";
     private final String API_LINK = "https://canadacentral.api.cognitive.microsoft.com";
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnCamera = (Button) findViewById(R.id.btnCamera);
         btnAnalyze = (Button) findViewById(R.id.btnAnalyze);
         txtResult = (TextView) findViewById(R.id.txt_result);
-        imageView = (ImageView) findViewById(R.id.imageView);
+       // imageView = (ImageView) findViewById(R.id.imageView2);
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btnAnalyze.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                getTextFromImage(v);
-            }
-        });
+//        btnAnalyze.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                getTextFromImage(v);
+//            }
+//        });
     }
 
 
@@ -68,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onActivityResult(int requestCode, int resultCode, Intent data){
             super.onActivityResult(requestCode, resultCode, data);
             bitmap = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(bitmap);
+            getTextFromImage(getView());
+           // imageView.setImageBitmap(bitmap);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
             ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
@@ -104,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             txtResult.setText(sb.toString());
+            Data data = Data.getInstance();
+            data.setTextView(sb.toString());
         }
 
 
@@ -113,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
 
         public TextView getTextView(){
             return txtResult;
+            }
+
+            private View getView(){
+        return this.view;
+            }
+            private void setView(View view){
+            this.view = view;
             }
 
     }

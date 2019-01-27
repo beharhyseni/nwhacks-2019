@@ -7,30 +7,23 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:weightSum="10"
-    android:background="@drawable/orange"
+    android:background="@drawable/yellow"
     android:layout_gravity="center"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="385dp"
-        android:layout_height="381dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false" />
 
 
     <Button
         android:id="@+id/btnCamera"
-        android:layout_width="129dp"
-        android:layout_height="109dp"
+        android:layout_width="95dp"
+        android:layout_height="75dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="140dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginRight="133dp"
-        android:layout_marginBottom="81dp"
+        android:layout_marginLeft="202dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginRight="114dp"
+        android:layout_marginBottom="31dp"
         android:background="@drawable/camera"
         android:textAlignment="center"
         android:textColor="@android:color/white" />
@@ -41,11 +34,12 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/btnCamera"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="0dp"
         android:background="@android:color/holo_red_dark"
         android:text="Press here to compare the price"
         android:textAlignment="center"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:visibility="invisible" />
 
 
     <TextView
@@ -54,6 +48,16 @@
         android:layout_height="115dp"
         android:layout_above="@+id/btnAnalyze"
         android:layout_marginBottom="-194dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="84dp"
+        app:srcCompat="@drawable/logo" />
 
 
 </RelativeLayout>
