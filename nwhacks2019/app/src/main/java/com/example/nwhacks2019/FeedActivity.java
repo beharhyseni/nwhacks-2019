@@ -5,12 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import com.google.gson.JsonObject;
-
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 public class FeedActivity extends AppCompatActivity {
 
