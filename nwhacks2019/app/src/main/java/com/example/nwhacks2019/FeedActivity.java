@@ -10,16 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-<<<<<<< HEAD
-import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-=======
-import org.json.JSONObject;
->>>>>>> 051069b633ab7ccb3d2c75a3c0a2a4d045a42bd5
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONObject;
 
@@ -45,9 +37,12 @@ public class FeedActivity extends AppCompatActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-<<<<<<< HEAD
+
         init();
         setTabs();
+        JSONObject results = CallServer();
+        Data data = Data.getInstance();
+        data.setResults(results);
     }
 
 
@@ -153,20 +148,10 @@ public class FeedActivity extends AppCompatActivity implements ActionBar.TabList
             // Returning no. of counts of fragments
             return 2;
         }
-=======
-        mRecyclerView = findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
-        JSONObject results = CallServer();
-        mAdapter = new PostsAdapter(results, this);
->>>>>>> 051069b633ab7ccb3d2c75a3c0a2a4d045a42bd5
     }
 
 }
+
 
 class ScrapeTask extends AsyncTask<Void, Void, JSONObject> {
 
@@ -175,7 +160,19 @@ class ScrapeTask extends AsyncTask<Void, Void, JSONObject> {
         JSONObject results = new JSONObject();
         try {
             Scraper scraper = new Scraper();
-            results = scraper.runScraper("lysol wipes", 3);
+            Data d = Data.getInstance();
+            String query = d.getTextView();
+            if(query.contains("axe") || query.contains("Axe") || query.contains("AXE")){
+            d.setTheQuery("axe");
+            }
+            else if(query.contains("lysol") || query.contains("Lysol") || query.contains("LYSOL")){
+                d.setTheQuery("lysol");
+
+            }
+            else if (query.contains("exce") || query.contains("Exce") || query.contains("EXCE")){
+                d.setTheQuery("exce");
+            }
+            results = scraper.runScraper(query, 2);
         } catch (Exception e) {
             e.printStackTrace();
         }

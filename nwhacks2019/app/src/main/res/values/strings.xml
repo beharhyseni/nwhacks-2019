@@ -13,40 +13,40 @@
 
     <!-- Title string array -->
     <string-array name="title">
-        <item>Taj Mahal</item>
-        <item>Hawa Mahal</item>
-        <item>Golden Temple</item>
-        <item>Shore Temple</item>
-        <item>Chhatrapati Shivaji Terminus</item>
-        <item>Lotus Temple</item>
-        <item>Victoria Memorial Hall</item>
-        <item>Brihadeeswarar Temple</item>
-        <item>Mahabodhi Temple</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
     </string-array>
 
     <!-- Location string array -->
     <string-array name="location">
-        <item>Agra</item>
-        <item>Jaipur</item>
-        <item>Amritsar</item>
-        <item>Bay of Bengal</item>
-        <item>Mumbai</item>
-        <item>New Delhi</item>
-        <item>Kolkata</item>
-        <item>Tamil Nadu</item>
-        <item>Patna</item>
+        <item></item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
+        <item>test</item>
     </string-array>
 
     <!-- Year string array -->
     <string-array name="constructed_year">
-        <item>1632</item>
-        <item>1799 AD</item>
-        <item>1577</item>
-        <item>700–728 AD</item>
-        <item>May 1888</item>
-        <item>1987</item>
-        <item>1906</item>
-        <item>1010 CE</item>
-        <item>250 BCE</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
     </string-array>
 </resources>

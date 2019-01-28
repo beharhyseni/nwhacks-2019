@@ -106,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
             Data data = Data.getInstance();
             data.setTextView(sb.toString());
         }
-
-
     }
 
 

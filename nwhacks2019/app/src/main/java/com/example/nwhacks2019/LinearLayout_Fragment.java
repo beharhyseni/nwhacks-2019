@@ -2,6 +2,7 @@ package com.example.nwhacks2019;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,14 +26,68 @@ public class LinearLayout_Fragment extends Fragment {
 	private static ArrayList<Data_Model> listArrayList;
 	private static ListView_Recycler_Adapter adapter;
 
+	Data d = Data.getInstance();
 	// Images array for images
-	private static final int[] images = { R.drawable.tajmahal,
-			R.drawable.hawamahal, R.drawable.golden, R.drawable.shore,
-			R.drawable.shivaji, R.drawable.lotus, R.drawable.victoria,
-			R.drawable.brihadishwara, R.drawable.mahabodhi };
+//	private static final int[] images = { R.drawable.tajmahal,
+//			R.drawable.hawamahal, R.drawable.golden, R.drawable.shore,
+//			R.drawable.shivaji, R.drawable.lotus, R.drawable.victoria,
+//			R.drawable.brihadishwara, R.drawable.mahabodhi };
 
-	// String array for title, location, year
-	String[] getTitle, getLocation, getYear;
+
+	private static final int[] images = { R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+            R.drawable.lysol,  R.drawable.lysol,  R.drawable.lysol,
+    };
+	private static final int[] ran = { R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,
+            R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,
+            R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,R.drawable.white,
+            R.drawable.white,R.drawable.white,R.drawable.white,
+
+    };
+    private static final int[] choco = {R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+            R.drawable.choco, R.drawable.choco, R.drawable.choco,
+
+    };
+
+    private static final int[] axe = { R.drawable.axe,R.drawable.axe,R.drawable.axe,
+            R.drawable.axe,R.drawable.axe,R.drawable.axe,
+            R.drawable.axe,R.drawable.axe,R.drawable.axe,
+            R.drawable.axe,R.drawable.axe,R.drawable.axe,R.drawable.axe,R.drawable.axe,R.drawable.axe,R.drawable.axe,
+            R.drawable.axe,R.drawable.axe,R.drawable.axe,R.drawable.axe,R.drawable.axe,
+
+            R.drawable.axe,R.drawable.axe,R.drawable.axe,
+            R.drawable.axe,R.drawable.axe,R.drawable.axe,
+
+    };
+    private static final int[] imagesw = { R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+            R.drawable.white,  R.drawable.white,  R.drawable.white,
+
+    };
+
+
+    // String array for title, location, year
+	String[] getName, getPrice, getStore, getImageURLs;
 	private static RelativeLayout bottomLayout;
 	private static LinearLayoutManager mLayoutManager;
 
@@ -62,12 +117,22 @@ public class LinearLayout_Fragment extends Fragment {
 				.findViewById(R.id.loadItemsLayout_recyclerView);
 		// Getting the string array from strings.xml
 
-		getTitle = getActivity().getResources().getStringArray(R.array.title);
-		getLocation = getActivity().getResources().getStringArray(
-				R.array.location);
-		getYear = getActivity().getResources().getStringArray(
-				R.array.constructed_year);
+        Data data = Data.getInstance();
+        data.setData();
 
+        /*
+        getName = getActivity().getResources().getStringArray(R.array.title);
+		getPrice = getActivity().getResources().getStringArray(
+				R.array.location);
+		getStore = getActivity().getResources().getStringArray(
+				R.array.constructed_year);
+        * */
+		getName = data.getNames();
+		getPrice = data.getPrices();
+		getStore = data.getStores();
+        getImageURLs = data.getImages();
+        
+        
 		mLayoutManager = new LinearLayoutManager(getActivity());
 		listRecyclerView = (RecyclerView) view
 				.findViewById(R.id.linear_recyclerview);
@@ -86,10 +151,34 @@ public class LinearLayout_Fragment extends Fragment {
 	// populate the list view by adding data to arraylist
 	private void populatRecyclerView() {
 		listArrayList = new ArrayList<Data_Model>();
-		for (int i = 0; i < getTitle.length; i++) {
-			listArrayList.add(new Data_Model(getTitle[i], getLocation[i],
-					getYear[i], images[i]));
-		}
+
+		if(d.getTheQuery() == "exce"){
+            for (int i = 0; i < getName.length; i++) {
+                listArrayList.add(new Data_Model(getName[i], getPrice[i],
+                        getStore[i], choco[i]));
+            }
+
+        }
+        else if(d.getTheQuery() == "axe" ){
+            for (int i = 0; i < getName.length; i++) {
+                listArrayList.add(new Data_Model(getName[i], getPrice[i],
+                        getStore[i], axe[i]));
+            }
+
+        }
+        else if(d.getTheQuery() == "lysol" ){
+        for (int i = 0; i < getName.length; i++) {
+            listArrayList.add(new Data_Model(getName[i], getPrice[i],
+                    getStore[i], images[i]));
+        }}
+  else {
+        for (int i = 0; i < getName.length; i++) {
+            listArrayList.add(new Data_Model(getName[i], getPrice[i],
+                    getStore[i], imagesw[i]));
+        }}
+
+
+
 		adapter = new ListView_Recycler_Adapter(getActivity(), listArrayList);
 		listRecyclerView.setAdapter(adapter);// set adapter on recyclerview
 		adapter.notifyDataSetChanged();// Notify the adapter
@@ -158,15 +247,15 @@ public class LinearLayout_Fragment extends Fragment {
 
 			@Override
 			public void run() {
-
+                List<ArrayList> list = new ArrayList<>();
 				// Loop for 3 items
-				for (int i = 0; i < 3; i++) {
-					int value = new RandomNumberGenerator().RandomGenerator();// Random
-																				// value
+				for (int i = 0; i < d.getNames().length; i++) {
+//					int value = new RandomNumberGenerator().RandomGenerator();// Random
+//																				// value
 
 					// add random data to arraylist
-					listArrayList.add(new Data_Model(getTitle[value],
-							getLocation[value], getYear[value], images[value]));
+					listArrayList.add(new Data_Model(getName[i],
+							getPrice[i], getStore[i], ran[i]));
 				}
 				adapter.notifyDataSetChanged();// notify adapter
 

@@ -23,7 +23,7 @@ public class Scraper {
     // Max number of google searches done by google api -- is 20 by default
     private int maxGoogleResults = 20;
     // store sites to scrape
-    private String[] stores = {"amazon", "londondrugs", "realcanadiansuperstore", "thriftyfoods"};
+    private String[] stores = {"amazon", "londondrugs", "thriftyfoods"};
     // Map loose store name to official store name (e.g. "londondrugs" -> "London Drugs")
     private Map<String, String> storeNameToFullName = new HashMap<String, String>();
 
@@ -34,7 +34,6 @@ public class Scraper {
     private void initializeStoreToFullNameMap() {
         storeNameToFullName.put("amazon", "Amazon");
         storeNameToFullName.put("londondrugs", "London Drugs");
-        storeNameToFullName.put("realcanadiansuperstore", "Real Canadian SuperStore");
         storeNameToFullName.put("thriftyfoods", "Thrify Foods");
     }
 

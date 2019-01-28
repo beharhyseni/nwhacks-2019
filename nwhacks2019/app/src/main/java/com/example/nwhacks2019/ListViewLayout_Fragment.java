@@ -32,10 +32,22 @@ public class ListViewLayout_Fragment extends Fragment {
 	boolean userScrolled = false;
 
 	// Images int array from drawable folders
-	private static final int[] images = { R.drawable.tajmahal,
-			R.drawable.hawamahal, R.drawable.golden, R.drawable.shore,
-			R.drawable.shivaji, R.drawable.lotus, R.drawable.victoria,
-			R.drawable.brihadishwara, R.drawable.mahabodhi };
+//	private static final int[] images = { R.drawable.tajmahal,
+//			R.drawable.hawamahal, R.drawable.golden, R.drawable.shore,
+//			R.drawable.shivaji, R.drawable.lotus, R.drawable.victoria,
+//			R.drawable.brihadishwara, R.drawable.mahabodhi };
+
+	private static final int[] images = { R.drawable.white,  R.drawable.white,  R.drawable.white ,
+			R.drawable.white,  R.drawable.white,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+			R.drawable.white,  R.drawable.lysol,  R.drawable.lysol,
+	};
 
 	// String array for title, location,year
 	String[] getTitle, getLocation, getYear;
